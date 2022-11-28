@@ -1,17 +1,21 @@
-# zad 24
 import random
 import statistics
 
-random.seed(123456)
-randomlist = [random.randrange(1, 101) for i in range(200)]
-sortlist = randomlist.copy()
-sortlist.sort()
+random.seed(162681)
+randomList = [random.randrange(1, 101) for i in range(200)]
 
-n = len(sortlist)
-if n % 2 == 0:
-    med = (sortlist[n // 2] + sortlist[n // 2 + 1]) / 2
-else:
-    med = sortlist[((n + 1) // 2)]
 
-print(med)
-print(statistics.median(randomlist))
+def median(tab):
+    sortlist = tab.copy()
+    sortlist.sort()
+    lng = len(sortlist)
+    if lng % 2 == 0:
+        median = (sortlist[(lng - 1) // 2] + sortlist[lng // 2]) / 2
+    else:
+        median = sortlist[lng // 2]
+
+    return median
+
+
+print(f'Wbudowana mediana: {statistics.median(randomList)}')
+print(f'Moja mediana: {median(randomList)}')
